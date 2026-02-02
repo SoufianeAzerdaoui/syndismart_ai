@@ -1,4 +1,4 @@
-import json
+"""import json
 
 def get_syndic_policy():
     """
@@ -54,4 +54,4 @@ def get_syndic_policy():
 with open('policy_config.json', 'w', encoding='utf-8') as f:
     json.dump(get_syndic_policy(), f, ensure_ascii=False, indent=4)
 
-print("La politique a été générée et sauvegardée dans 'policy_config.json'.")
+print("La politique a été générée et sauvegardée dans 'policy_config.json'.")"""
