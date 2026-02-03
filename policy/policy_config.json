@@ -5,11 +5,11 @@
     "P0": {
       "label": "Urgence critique",
       "is_urgent": 1,
-      "sla_first_response_minutes": 5,
-      "sla_action_target_minutes": 30,
+      "sla_target_minutes": 5,
       "keywords": [
         "incendie",
         "fumée",
+        "fumee",
         "flammes",
         "dokhan",
         "dkhan",
@@ -39,6 +39,7 @@
         "menace",
         "mdabza",
         "tferga3",
+        "eau monte",
         "personne inconsciente",
         "inconsciente",
         "personne âgée tombée",
@@ -46,15 +47,16 @@
         "cardiaque",
         "respiration",
         "porte forcée",
-        "serrure cassée"
+        "serrure cassée",
+        "respiration difficile",
+        "risque electrique"
       ],
       "response_template": "⚠️ Urgence critique détectée. Restez en sécurité. Un agent est alerté immédiatement. Si danger immédiat, appelez les urgences. Merci d’envoyer : résidence/bloc, étage, numéro d’appartement, description courte, et photos/vidéo si possible."
     },
     "P1": {
       "label": "Urgent",
       "is_urgent": 1,
-      "sla_first_response_minutes": 30,
-      "sla_action_target_minutes": 240,
+      "sla_target_minutes": 30,      
       "keywords": [
         "panne d’eau",
         "panne eau",
@@ -66,6 +68,8 @@
         "dow m9to3",
         "daw m9to3",
         "parties communes",
+        "panne electrique parties communes",
+        "coupure electrique parties communes",
         "escaliers noirs",
         "porte garage bloquée",
         "garage bloqué",
@@ -80,19 +84,20 @@
         "garage mbloque",
         "Garaj mbeloqué",
         "ascenseur en panne",
-        "ascenseur en panne",
         "asansour khaser",
         "camera sécurité en panne",
         "camera panne",
-        "personne suspecte"
+        "personne suspecte",
+        "porte garage bloquee",
+        "acces garage bloque",
+        "camera securite en panne"
       ],
       "response_template": "Nous avons bien reçu votre signalement urgent. Un ticket a été créé et le prestataire est contacté. Merci d’indiquer : résidence/bloc, localisation exacte, depuis quand, et joindre une photo/vidéo si possible."
     },
     "P2": {
       "label": "Maintenance / Nuisance",
       "is_urgent": 0,
-      "sla_first_response_minutes": 240,
-      "sla_action_target_minutes": 4320,
+      "sla_target_minutes": 240,
       "keywords": [
         "bruit",
         "bruit répétitif",
@@ -113,15 +118,17 @@
         "stationnement",
         "stationnement abusif",
         "badge",
-        "télécommande"
+        "télécommande",
+        "telecommande",
+        "proprete",
+        "salete"
       ],
       "response_template": "Votre demande de maintenance a été enregistrée. Merci de préciser : résidence/bloc, lieu exact, heure/jour (si bruit), et joindre une photo si possible. Nous reviendrons vers vous pour planifier l’intervention."
     },
     "P3": {
       "label": "Administratif",
       "is_urgent": 0,
-      "sla_first_response_minutes": 1440,
-      "sla_action_target_minutes": 7200,
+      "sla_target_minutes": 1440,
       "keywords": [
         "attestation",
         "attestation de résidence",
@@ -144,11 +151,70 @@
       "response_template": "Demande administrative reçue. Merci de préciser votre résidence/bloc et votre numéro d’appartement (et la référence si disponible). Nous vous répondrons dès que possible avec la procédure et le délai de traitement."
     }
   },
+  
   "guardrails": {
-    "rule_priority": "If any P0 keyword matches, classify as P0 even if other categories match.",
-    "elevator_rule": "If 'ascenseur' AND ('bloqué' OR 'coincé' OR 'm7bouss') AND ('personne' OR 'à l’intérieur' OR 'dakhel') => P0. If ascenseur issue without person => P1.",
-    "flood_rule": "If flood described as 'majeure' OR 'eau monte' OR 'partout' OR 'risque électrique' => P0. Otherwise 'fuite importante' => P1.",
-    "violence_rule": "If 'agression'/'bagarre'/'mdabza'/'violence'/'menace' => P0. If only 'suspect' without aggression => P1.",
-    "medical_rule": "Any medical emergency terms (inconscient, respiration, cardiaque, personne âgée tombée) => P0."
+    "rule_priority": "P0 first: if any P0 pattern matches, return P0 even if other levels match.",
+
+    "patterns": {
+      "P0": [
+        {
+          "id": "P0_GAS",
+          "any": ["gaz", "odeur de gaz", "fuite gaz", "suspicion fuite gaz", "ri7t lghaz", "ri7t lgaz"],
+          "explain": "Gaz / odeur de gaz => P0"
+        },
+        {
+          "id": "P0_FIRE",
+          "any": ["incendie", "fumee", "flammes", "dokhan", "dkhan", "afia", "3afia"],
+          "explain": "Incendie / fumée / flammes => P0"
+        },
+        {
+          "id": "P0_ELEVATOR_TRAPPED",
+          "all": ["ascenseur"],
+          "any_group": [
+            ["bloque", "coince", "m7bouss", "m7boussa"],
+            ["personne", "a l'interieur", "dakhel", "dakhla"],
+            ["a l'interieur", "a linterieur", "a l interieur", "interieur", "a l'interieur"]
+          ],
+          "explain": "Ascenseur bloqué + personne à l’intérieur => P0"
+        },
+        {
+          "id": "P0_FLOOD_MAJOR",
+          "all": ["inondation"],
+          "any": ["majeure", "partout", "eau monte", "risque electrique"],
+          "explain": "Inondation majeure / eau monte / partout / risque électrique => P0"
+        },
+        {
+          "id": "P0_VIOLENCE",
+          "any": ["agression", "bagarre", "violence", "menace", "mdabza", "tferga3"],
+          "explain": "Agression / bagarre => P0"
+        },
+        {
+          "id": "P0_MEDICAL",
+          "any": ["inconscient", "personne inconsciente", "ne respire pas", "respiration", "cardiaque", "personne agee tombee"],
+          "explain": "Urgence médicale => P0"
+        }
+      ],
+      "P1": [
+        {
+          "id": "P1_GARAGE_BLOCKED",
+          "all": ["garage"],
+          "any": ["bloque", "bloquee", "mbloque", "kayt7ellch", "mabghach yt7el", "impossible d'entrer", "impossible d entrer"],
+          "explain": "Porte/accès garage bloqué => P1"
+        },
+        {
+          "id": "P1_WATER_RULE",
+          "any": ["panne d'eau", "plus d'eau", "coupure d'eau", "ma kaynch lma", "ma kaynach lma", "mouchkil f lma"],
+          "explain": "Panne/coupure d’eau => P1"
+        },
+        {
+          "id": "P1_ELECTRIC_SPARKS",
+          "any": ["etincelles", "étincelles", "court circuit", "sparks", "tchicha dyal lbar9"],
+          "explain": "Étincelles / risque électrique => P1"
+        }
+
+      ]
+
+    }
   }
+
 }
