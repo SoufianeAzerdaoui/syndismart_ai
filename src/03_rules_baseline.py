@@ -8,18 +8,22 @@ import re
 _space_re = re.compile(r"\s+")
 _non_word_re = re.compile(r"[^a-z0-9\s'-]")  # keep basic useful chars
 
-
 def normalize(s: str) -> str:
     s = (s or "").lower().strip()
+
+    # unify apostrophes
     s = s.replace("’", "'").replace("`", "'").replace("´", "'")
 
+    # unicode normalize + remove accents
     s = unicodedata.normalize("NFKD", s)
     s = "".join(c for c in s if not unicodedata.combining(c))
 
+    # remove weird punctuation (keep letters, digits, space, ' and -)
     s = _non_word_re.sub(" ", s)
+
+    # collapse spaces
     s = _space_re.sub(" ", s).strip()
     return s
-
 
 def match_pattern(t: str, pattern: dict) -> bool:
     # "all": all terms must appear
@@ -41,9 +45,8 @@ def match_pattern(t: str, pattern: dict) -> bool:
 
     return True
 
-
-def _normalize_pattern(p: dict) -> dict:
-    """Normalize a single guardrail pattern dict in-place."""
+def _normalize_pattern_obj(p: dict) -> dict:
+    # Normalize a single pattern dict in-place
     if "all" in p:
         p["all"] = [normalize(x) for x in p["all"]]
     if "any" in p:
@@ -52,47 +55,57 @@ def _normalize_pattern(p: dict) -> dict:
         p["any_group"] = [[normalize(x) for x in grp] for grp in p["any_group"]]
     return p
 
-
 def normalize_policy(policy: dict) -> dict:
     # Normalize keywords P1/P2/P3
     for lvl in ["P1", "P2", "P3"]:
-        policy["levels"][lvl]["keywords"] = [
-            normalize(k) for k in policy["levels"][lvl].get("keywords", [])
-        ]
+        if "levels" in policy and lvl in policy["levels"]:
+            policy["levels"][lvl]["keywords"] = [
+                normalize(k) for k in policy["levels"][lvl].get("keywords", [])
+            ]
 
-    # Normalize ALL guardrails patterns (P0/P1/P2/P3 if present)
-    guard_patterns = policy.get("guardrails", {}).get("patterns", {})
-    for lvl, plist in guard_patterns.items():
+    # Normalize ALL guardrails patterns (P0, P1, P2, P3 if present)
+    guard = policy.get("guardrails", {})
+    patterns = guard.get("patterns", {})
+    for lvl, plist in patterns.items():
         if isinstance(plist, list):
             for p in plist:
-                _normalize_pattern(p)
+                _normalize_pattern_obj(p)
 
     return policy
-
 
 def rules_classify(text_clean: str, policy: dict):
     t = normalize(text_clean)
     if not t:
         return "P3", "EMPTY_TEXT"
 
-    # 1) Guardrails priority: P0 -> P1 -> P2 -> P3 (if they exist)
-    guard_patterns = policy.get("guardrails", {}).get("patterns", {})
-    for lvl in ["P0", "P1", "P2", "P3"]:
-        patterns = guard_patterns.get(lvl, [])
-        for p in patterns:
-            if match_pattern(t, p):
-                # Return the guardrail level + rule id
-                return lvl, p.get("id", f"{lvl}_PATTERN")
+    patterns = policy.get("guardrails", {}).get("patterns", {})
 
-    # 2) Baseline keywords (P1/P2/P3)
+    # 1) P0 guardrails first
+    for p in patterns.get("P0", []):
+        if match_pattern(t, p):
+            return "P0", p.get("id", "P0_PATTERN")
+
+    # 2) P1 guardrails (IMPORTANT)
+    for p in patterns.get("P1", []):
+        if match_pattern(t, p):
+            return "P1", p.get("id", "P1_PATTERN")
+
+    # (Optionnel) si tu ajoutes plus tard guardrails P2/P3
+    # for p in patterns.get("P2", []):
+    #     if match_pattern(t, p):
+    #         return "P2", p.get("id", "P2_PATTERN")
+    # for p in patterns.get("P3", []):
+    #     if match_pattern(t, p):
+    #         return "P3", p.get("id", "P3_PATTERN")
+
+    # 3) P1/P2/P3 keywords (simple baseline)
     for level in ["P1", "P2", "P3"]:
-        kws = policy["levels"][level].get("keywords", [])
+        kws = policy.get("levels", {}).get(level, {}).get("keywords", [])
         if any(k in t for k in kws):
             return level, f"{level}_KEYWORD"
 
-    # 3) Default
+    # 4) default
     return "P3", "DEFAULT"
-
 
 def main():
     base_dir = Path(__file__).resolve().parent.parent
@@ -118,7 +131,6 @@ def main():
     print(df["priority_rules"].value_counts())
     print("\nTop rule_match:")
     print(df["rule_match"].value_counts().head(15))
-
 
 if __name__ == "__main__":
     main()
