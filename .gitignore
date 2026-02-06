@@ -15,7 +15,6 @@ env/
 # Jupyter / Data
 # ===============================
 .ipynb_checkpoints/
-*.ipynb
 
 # ===============================
 # Logs & temp files
