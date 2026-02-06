@@ -16,6 +16,11 @@ env/
 # ===============================
 .ipynb_checkpoints/
 
+
+# Autoriser les notebooks dans notebooks/
+!notebooks/
+!notebooks/**/*.ipynb
+
 # ===============================
 # Logs & temp files
 # ===============================
