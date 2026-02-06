@@ -14,7 +14,13 @@ env/
 # ===============================
 # Jupyter / Data
 # ===============================
+# Jupyter
 .ipynb_checkpoints/
+*.ipynb
+
+# Autoriser les notebooks dans notebooks/
+!notebooks/
+!notebooks/**/*.ipynb
 
 # ===============================
 # Logs & temp files
