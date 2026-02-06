@@ -1,0 +1,8 @@
+row_index,message_id,urgency_level,category,error,raw_output
+1,MSG_SI9NB74X2EK3,P1,elevator,LLM output is not valid JSON,
+2,MSG_1YV2STN7E36H,P1,elevator,"HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=90)",
+4,MSG_6RIDLOFAS1EK,P3,other,LLM output is not valid JSON,
+5,MSG_FFQOT8HLJEFY,P1,electricity,LLM output is not valid JSON,
+6,MSG_LPU0DK0GET8T,P0,watr_leak,"HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=90)",
+9,MSG_SUSMESJT2JPN,P3,other,"HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=90)",
+10,MSG_LQC3C54WSQT2,P1,garage_access,LLM output is not valid JSON,

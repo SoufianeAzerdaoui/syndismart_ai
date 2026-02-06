@@ -1,0 +1,439 @@
+message_id,datetime,residence_id,text,text_clean,channel,has_media,language,language_confidence,priority_rules,rule_match,is_urgent_rules,category,category_match,rag_sources,rag_scores,rag_context,gen_json,response_draft,required_info,assigned_to,status,sla_target_minutes,is_urgent,decision_source
+MSG_SI9NB74X2EK3,2025-12-27 01:42:18,RES_RABAT_RIHAB,Ascenseur en panne depuis ce matin près du tableau électrique. Personnes âgées au 5e...,ascenseur en panne depuis ce matin près du tableau électrique. personnes âgées au 5e...,whatsapp,0,fr,0.8722155730221341,P1,P1_KEYWORD,1,elevator,CAT_ELEVATOR,"[""data/docs/procedures_p0.md | ### P0_ELEVATOR_TRAPPED | chunk=0"", ""data/docs/keywords_levels.md | ## P1 | chunk=0"", ""data/docs/procedures_p0.md | ## Actions recommandées (P0) | chunk=0"", ""data/docs/procedures_p0.md | ### P0_MEDICAL | chunk=0"", ""data/docs/procedures_p1.md | ### P1_ELECTRIC_SPARKS | chunk=0""]","[0.859965443611145, 0.8566081523895264, 0.8487057685852051, 0.840181827545166, 0.8352477550506592]","SOURCE: data/docs/procedures_p0.md
+SECTION: ### P0_ELEVATOR_TRAPPED
+
+### P0_ELEVATOR_TRAPPED
+- Description: Ascenseur bloqué + personne à l’intérieur => P0
+- Doit contenir (all): ['ascenseur']
+- Groupes (any_group): [['bloque', 'coince', 'm7bouss', 'm7boussa'], ['personne', ""a l'interieur"", 'dakhel', 'dakhla'], [""a l'interieur"", 'a linterieur', 'a l interieur', 'interieur', ""a l'interieur""]]
+
+---
+
+SOURCE: data/docs/keywords_levels.md
+SECTION: ## P1
+
+## P1
+panne d’eau, panne eau, coupure eau, ma m9to3, lma m9to3, panne électrique, coupure électrique, dow m9to3, daw m9to3, parties communes, panne electrique parties communes, coupure electrique parties communes, escaliers noirs, porte garage bloquée, garage bloqué, garaj mbloqué, entrées impossible, sorties impossible, mabghach yt7el, accès bloqué, fuite importante, fuite importante mais pas inondation majeure, fuite sérieuse, garage mbloque, Garaj mbeloqué, ascenseur en panne, asansour khaser, camera sécurité en panne, camera panne, personne suspecte, porte garage bloquee, acces garage bloque, camera securite en panne
+
+---
+
+SOURCE: data/docs/procedures_p0.md
+SECTION: ## Actions recommandées (P0)
+
+## Actions recommandées (P0)
+- Demander la localisation exacte (résidence/bloc/étage).
+- Confirmer si danger immédiat (oui/non).
+- Demander photo/vidéo si possible (sans retarder l'urgence).
+- Escalader immédiatement vers prestataire/sécurité selon catégorie.
+
+---
+
+SOURCE: data/docs/procedures_p0.md
+SECTION: ### P0_MEDICAL
+
+### P0_MEDICAL
+- Description: Urgence médicale => P0
+- Un des mots (any): ['inconscient', 'personne inconsciente', 'ne respire pas', 'respiration', 'cardiaque', 'personne agee tombee']
+
+---
+
+SOURCE: data/docs/procedures_p1.md
+SECTION: ### P1_ELECTRIC_SPARKS
+
+### P1_ELECTRIC_SPARKS
+- Description: Étincelles / risque électrique => P1
+- Un des mots (any): ['etincelles', 'étincelles', 'court circuit', 'sparks', 'tchicha dyal lbar9']","{""urgency_level"": ""P1"", ""category"": ""elevator"", ""is_urgent"": 1, ""sla_target_minutes"": 30, ""assigned_to"": ""PRESTATAIRE"", ""response_draft"": ""Signalement urgent reçu. Merci d’indiquer la résidence/bloc, la localisation exacte, depuis quand, et joindre une photo/vidéo si possible. Si danger immédiat, appelez les urgences. Nous alertons le prestataire."", ""required_info"": [""localisation exacte"", ""depuis quand"", ""photo/vidéo si possible""], ""decision_source"": ""RAG"", ""status"": ""TO_VALIDATE""}","Signalement urgent reçu. Merci d’indiquer la résidence/bloc, la localisation exacte, depuis quand, et joindre une photo/vidéo si possible. Si danger immédiat, appelez les urgences. Nous alertons le prestataire.","[""localisation exacte"", ""depuis quand"", ""photo/vidéo si possible""]",PRESTATAIRE,TO_VALIDATE,30,1,RAG
+MSG_1YV2STN7E36H,2026-01-15 09:15:15,RES_FES_ANDALOUS,Ascenseur en panne depuis depuis 3 jours près du tableau électrique. Personnes âgées au 5e...,ascenseur en panne depuis depuis 3 jours près du tableau électrique. personnes âgées au 5e...,whatsapp,0,fr,0.8773366039860263,P1,P1_KEYWORD,1,elevator,CAT_ELEVATOR,"[""data/docs/procedures_p0.md | ### P0_ELEVATOR_TRAPPED | chunk=0"", ""data/docs/keywords_levels.md | ## P1 | chunk=0"", ""data/docs/procedures_p0.md | ## Actions recommandées (P0) | chunk=0"", ""data/docs/procedures_p2.md | ## Cas typiques (P2) | chunk=0"", ""data/docs/procedures_p1.md | # Procédures - Urgence (P1) | chunk=0""]","[0.8604229688644409, 0.8597067594528198, 0.8465084433555603, 0.8402387499809265, 1.0]","SOURCE: data/docs/procedures_p0.md
+SECTION: ### P0_ELEVATOR_TRAPPED
+
+### P0_ELEVATOR_TRAPPED
+- Description: Ascenseur bloqué + personne à l’intérieur => P0
+- Doit contenir (all): ['ascenseur']
+- Groupes (any_group): [['bloque', 'coince', 'm7bouss', 'm7boussa'], ['personne', ""a l'interieur"", 'dakhel', 'dakhla'], [""a l'interieur"", 'a linterieur', 'a l interieur', 'interieur', ""a l'interieur""]]
+
+---
+
+SOURCE: data/docs/keywords_levels.md
+SECTION: ## P1
+
+## P1
+panne d’eau, panne eau, coupure eau, ma m9to3, lma m9to3, panne électrique, coupure électrique, dow m9to3, daw m9to3, parties communes, panne electrique parties communes, coupure electrique parties communes, escaliers noirs, porte garage bloquée, garage bloqué, garaj mbloqué, entrées impossible, sorties impossible, mabghach yt7el, accès bloqué, fuite importante, fuite importante mais pas inondation majeure, fuite sérieuse, garage mbloque, Garaj mbeloqué, ascenseur en panne, asansour khaser, camera sécurité en panne, camera panne, personne suspecte, porte garage bloquee, acces garage bloque, camera securite en panne
+
+---
+
+SOURCE: data/docs/procedures_p0.md
+SECTION: ## Actions recommandées (P0)
+
+## Actions recommandées (P0)
+- Demander la localisation exacte (résidence/bloc/étage).
+- Confirmer si danger immédiat (oui/non).
+- Demander photo/vidéo si possible (sans retarder l'urgence).
+- Escalader immédiatement vers prestataire/sécurité selon catégorie.
+
+---
+
+SOURCE: data/docs/procedures_p2.md
+SECTION: ## Cas typiques (P2)
+
+## Cas typiques (P2)
+- Bruit / nuisance répétitive
+- Propreté / saleté / poubelles pleines
+- Stationnement abusif
+- Badge / télécommande / accès (si pas bloquant/sécurité)
+
+---
+
+SOURCE: data/docs/procedures_p1.md
+SECTION: # Procédures - Urgence (P1)
+
+# Procédures - Urgence (P1)
+
+Ces cas sont urgents mais pas forcément vitaux. Intervention rapide.","{""urgency_level"": ""P1"", ""category"": ""elevator"", ""is_urgent"": 1, ""sla_target_minutes"": 30, ""assigned_to"": ""PRESTATAIRE"", ""response_draft"": ""Signalement urgent reçu. Merci d’indiquer la résidence/bloc, la localisation exacte, depuis quand, et joindre une photo/vidéo si possible. Si danger immédiat, appelez les urgences. Nous alertons le prestataire."", ""required_info"": [""localisation exacte"", ""depuis quand"", ""photo/vidéo si possible""], ""decision_source"": ""RAG"", ""status"": ""TO_VALIDATE""}","Signalement urgent reçu. Merci d’indiquer la résidence/bloc, la localisation exacte, depuis quand, et joindre une photo/vidéo si possible. Si danger immédiat, appelez les urgences. Nous alertons le prestataire.","[""localisation exacte"", ""depuis quand"", ""photo/vidéo si possible""]",PRESTATAIRE,TO_VALIDATE,30,1,RAG
+MSG_J88QEOZ0KZ4Z,2026-01-16 04:58:09,RES_RABAT_RIHAB,Pouvez-vous m’envoyer le détail des charges du mois dernier ?,pouvez-vous m'envoyer le détail des charges du mois dernier ?,whatsapp,0,fr,0.8356005642471178,P3,P3_KEYWORD,0,admin,CAT_ADMIN,"[""data/docs/admin_faq.md | # FAQ - Administratif (P3) | chunk=0"", ""data/docs/procedures_p3.md | # Procédures - Administratif (P3) | chunk=0"", ""data/docs/admin_faq.md | ## Détail des charges | chunk=0"", ""data/docs/procedures_p3.md | ## Cas typiques (P3) | chunk=0"", ""data/docs/keywords_levels.md | ## P3 | chunk=0""]","[0.8791545629501343, 0.8698578476905823, 0.8646212220191956, 0.862089991569519, 0.8566970825195312]","SOURCE: data/docs/admin_faq.md
+SECTION: # FAQ - Administratif (P3)
+
+# FAQ - Administratif (P3)
+
+---
+
+SOURCE: data/docs/procedures_p3.md
+SECTION: # Procédures - Administratif (P3)
+
+# Procédures - Administratif (P3)
+
+Cas administratifs, information, demandes de documents.
+
+---
+
+SOURCE: data/docs/admin_faq.md
+SECTION: ## Détail des charges
+
+## Détail des charges
+- Informations à demander: période, type de charges, justificatif souhaité.
+
+---
+
+SOURCE: data/docs/procedures_p3.md
+SECTION: ## Cas typiques (P3)
+
+## Cas typiques (P3)
+- Attestation de résidence
+- Quittance / facture
+- Détail des charges
+- Questions générales (horaires, procédures, réservation)
+
+---
+
+SOURCE: data/docs/keywords_levels.md
+SECTION: ## P3
+
+## P3
+attestation, attestation de résidence, war9a, charges, quittance, facture, paiement, khlass, flouss, règlement, suivi, suivi demande, retard dossier, ma jawbounich, pas de réponse, delai, ch7al khassni nkhless","{""urgency_level"": ""P3"", ""category"": ""admin"", ""is_urgent"": 0, ""sla_target_minutes"": 1440, ""assigned_to"": ""SYNDIC"", ""decision_source"": ""RAG"", ""status"": ""TO_VALIDATE"", ""response_draft"": ""Pour vous fournir le détail des charges du mois dernier, veuillez me communiquer la période concernée et si un justificatif est nécessaire."", ""required_info"": []}","Pour vous fournir le détail des charges du mois dernier, veuillez me communiquer la période concernée et si un justificatif est nécessaire.",[],SYNDIC,TO_VALIDATE,1440,0,RAG
+MSG_6RIDLOFAS1EK,2026-01-15 07:26:07,RES_FES_ATLAS,C’est quoi la procédure pour réserver la salle polyvalente ?,c'est quoi la procédure pour réserver la salle polyvalente ?,whatsapp,0,fr,0.8611315324067044,P3,DEFAULT,0,other,CAT_DEFAULT,"[""data/docs/procedures_p3.md | ## Actions recommandées (P3) | chunk=0"", ""data/docs/procedures_p3.md | ## Cas typiques (P3) | chunk=0"", ""data/docs/procedures_p3.md | # Procédures - Administratif (P3) | chunk=0"", ""data/docs/admin_faq.md | # FAQ - Administratif (P3) | chunk=0"", ""data/docs/procedures_p2.md | ## Cas typiques (P2) | chunk=0""]","[0.8560954332351685, 0.8518637418746948, 0.8501851558685303, 0.8501800298690796, 0.8474448919296265]","SOURCE: data/docs/procedures_p3.md
+SECTION: ## Actions recommandées (P3)
+
+## Actions recommandées (P3)
+- Identifier la demande exacte + période concernée.
+- Vérifier identité / appartement / résidence.
+- Donner procédure + délais + canal de livraison (WhatsApp/email).
+- Ticket syndic (ou équipe admin).
+
+---
+
+SOURCE: data/docs/procedures_p3.md
+SECTION: ## Cas typiques (P3)
+
+## Cas typiques (P3)
+- Attestation de résidence
+- Quittance / facture
+- Détail des charges
+- Questions générales (horaires, procédures, réservation)
+
+---
+
+SOURCE: data/docs/procedures_p3.md
+SECTION: # Procédures - Administratif (P3)
+
+# Procédures - Administratif (P3)
+
+Cas administratifs, information, demandes de documents.
+
+---
+
+SOURCE: data/docs/admin_faq.md
+SECTION: # FAQ - Administratif (P3)
+
+# FAQ - Administratif (P3)
+
+---
+
+SOURCE: data/docs/procedures_p2.md
+SECTION: ## Cas typiques (P2)
+
+## Cas typiques (P2)
+- Bruit / nuisance répétitive
+- Propreté / saleté / poubelles pleines
+- Stationnement abusif
+- Badge / télécommande / accès (si pas bloquant/sécurité)","{""urgency_level"": ""P3"", ""category"": ""other"", ""is_urgent"": 0, ""sla_target_minutes"": 1440, ""assigned_to"": ""SYNDIC"", ""response_draft"": ""Demande reçue. Merci de préciser la résidence/bloc, la localisation exacte, et joindre une photo/vidéo si possible."", ""required_info"": [], ""decision_source"": ""RAG"", ""status"": ""TO_VALIDATE""}","Demande reçue. Merci de préciser la résidence/bloc, la localisation exacte, et joindre une photo/vidéo si possible.",[],SYNDIC,TO_VALIDATE,1440,0,RAG
+MSG_FFQOT8HLJEFY,2026-01-18 14:53:54,RES_FES_ATLAS,Réclamation propreté : cage d’escalier A sale depuis depuis 30 min avec des étincelles. 🙏,réclamation propreté cage d'escalier a sale depuis depuis 30 min avec des étincelles.,whatsapp,0,fr,0.8482169120891414,P1,P1_ELECTRIC_SPARKS,1,electricity,CAT_ELECTRICITY,"[""data/docs/procedures_p2.md | ## Cas typiques (P2) | chunk=0"", ""data/docs/keywords_levels.md | ## P1 | chunk=0"", ""data/docs/keywords_levels.md | ## P2 | chunk=0"", ""data/docs/procedures_p1.md | ### P1_ELECTRIC_SPARKS | chunk=0"", ""data/docs/procedures_p0.md | ## Actions recommandées (P0) | chunk=0""]","[0.8469048738479614, 0.8464340567588806, 0.8430345058441162, 0.840484082698822, 0.8387477993965149]","SOURCE: data/docs/procedures_p2.md
+SECTION: ## Cas typiques (P2)
+
+## Cas typiques (P2)
+- Bruit / nuisance répétitive
+- Propreté / saleté / poubelles pleines
+- Stationnement abusif
+- Badge / télécommande / accès (si pas bloquant/sécurité)
+
+---
+
+SOURCE: data/docs/keywords_levels.md
+SECTION: ## P1
+
+## P1
+panne d’eau, panne eau, coupure eau, ma m9to3, lma m9to3, panne électrique, coupure électrique, dow m9to3, daw m9to3, parties communes, panne electrique parties communes, coupure electrique parties communes, escaliers noirs, porte garage bloquée, garage bloqué, garaj mbloqué, entrées impossible, sorties impossible, mabghach yt7el, accès bloqué, fuite importante, fuite importante mais pas inondation majeure, fuite sérieuse, garage mbloque, Garaj mbeloqué, ascenseur en panne, asansour khaser, camera sécurité en panne, camera panne, personne suspecte, porte garage bloquee, acces garage bloque, camera securite en panne
+
+---
+
+SOURCE: data/docs/keywords_levels.md
+SECTION: ## P2
+
+## P2
+bruit, bruit répétitif, nuisance, nuisance régulière, voisin dérange, voisin dérange souvent, sda3, sda3 kayt3awd, propreté, saleté, mwsekh, escalier mwsekh, droj moskhin, poubelles, poubelles pleines, zbel, stationnement, stationnement abusif, badge, télécommande, telecommande, proprete, salete
+
+---
+
+SOURCE: data/docs/procedures_p1.md
+SECTION: ### P1_ELECTRIC_SPARKS
+
+### P1_ELECTRIC_SPARKS
+- Description: Étincelles / risque électrique => P1
+- Un des mots (any): ['etincelles', 'étincelles', 'court circuit', 'sparks', 'tchicha dyal lbar9']
+
+---
+
+SOURCE: data/docs/procedures_p0.md
+SECTION: ## Actions recommandées (P0)
+
+## Actions recommandées (P0)
+- Demander la localisation exacte (résidence/bloc/étage).
+- Confirmer si danger immédiat (oui/non).
+- Demander photo/vidéo si possible (sans retarder l'urgence).
+- Escalader immédiatement vers prestataire/sécurité selon catégorie.","{""urgency_level"": ""P1"", ""category"": ""electricity"", ""is_urgent"": 1, ""sla_target_minutes"": 30, ""assigned_to"": ""PRESTATAIRE"", ""response_draft"": ""Signalement urgent reçu. Merci d’indiquer la résidence/bloc, la localisation exacte, depuis quand, et joindre une photo/vidéo si possible. Si danger immédiat, appelez les urgences. Nous alertons le prestataire."", ""required_info"": [""localisation exacte"", ""depuis quand"", ""photo/vidéo si possible""], ""decision_source"": ""RAG"", ""status"": ""TO_VALIDATE""}","Signalement urgent reçu. Merci d’indiquer la résidence/bloc, la localisation exacte, depuis quand, et joindre une photo/vidéo si possible. Si danger immédiat, appelez les urgences. Nous alertons le prestataire.","[""localisation exacte"", ""depuis quand"", ""photo/vidéo si possible""]",PRESTATAIRE,TO_VALIDATE,30,1,RAG
+MSG_LPU0DK0GET8T,2026-01-02 13:31:02,RES_FES_ANDALOUS,🚨 Inondation majeure au couloir du 3e : l’eau monte vite près du tableau électrique. Urgent !!,inondation majeure au couloir du 3e l'eau monte vite près du tableau électrique. urgent !!,whatsapp,0,fr,0.8517140733992061,P0,P0_FLOOD_MAJOR,1,watr_leak,CAT_WATER,"[""data/docs/keywords_levels.md | ## P1 | chunk=0"", ""data/docs/procedures_p0.md | ### P0_FLOOD_MAJOR | chunk=0"", ""data/docs/procedures_p0.md | ## Actions recommandées (P0) | chunk=0"", ""data/docs/procedures_p0.md | # Procédures - Urgence critique (P0) | chunk=0"", ""data/docs/procedures_p2.md | ## Cas typiques (P2) | chunk=0""]","[0.8687676191329956, 0.863944411277771, 0.8496246337890625, 0.8397003412246704, 0.8380005359649658]","SOURCE: data/docs/keywords_levels.md
+SECTION: ## P1
+
+## P1
+panne d’eau, panne eau, coupure eau, ma m9to3, lma m9to3, panne électrique, coupure électrique, dow m9to3, daw m9to3, parties communes, panne electrique parties communes, coupure electrique parties communes, escaliers noirs, porte garage bloquée, garage bloqué, garaj mbloqué, entrées impossible, sorties impossible, mabghach yt7el, accès bloqué, fuite importante, fuite importante mais pas inondation majeure, fuite sérieuse, garage mbloque, Garaj mbeloqué, ascenseur en panne, asansour khaser, camera sécurité en panne, camera panne, personne suspecte, porte garage bloquee, acces garage bloque, camera securite en panne
+
+---
+
+SOURCE: data/docs/procedures_p0.md
+SECTION: ### P0_FLOOD_MAJOR
+
+### P0_FLOOD_MAJOR
+- Description: Inondation majeure / eau monte / partout / risque électrique => P0
+- Doit contenir (all): ['inondation']
+- Un des mots (any): ['majeure', 'partout', 'eau monte', 'risque electrique']
+
+---
+
+SOURCE: data/docs/procedures_p0.md
+SECTION: ## Actions recommandées (P0)
+
+## Actions recommandées (P0)
+- Demander la localisation exacte (résidence/bloc/étage).
+- Confirmer si danger immédiat (oui/non).
+- Demander photo/vidéo si possible (sans retarder l'urgence).
+- Escalader immédiatement vers prestataire/sécurité selon catégorie.
+
+---
+
+SOURCE: data/docs/procedures_p0.md
+SECTION: # Procédures - Urgence critique (P0)
+
+# Procédures - Urgence critique (P0)
+
+Ces cas sont critiques. Toujours prioriser la sécurité.
+
+---
+
+SOURCE: data/docs/procedures_p2.md
+SECTION: ## Cas typiques (P2)
+
+## Cas typiques (P2)
+- Bruit / nuisance répétitive
+- Propreté / saleté / poubelles pleines
+- Stationnement abusif
+- Badge / télécommande / accès (si pas bloquant/sécurité)","{""urgency_level"": ""P0"", ""category"": ""watr_leak"", ""is_urgent"": 1, ""sla_target_minutes"": 5, ""assigned_to"": ""PRESTATAIRE"", ""response_draft"": ""Signalement urgent reçu. Merci d’indiquer la résidence/bloc, la localisation exacte, depuis quand, et joindre une photo/vidéo si possible. Si danger immédiat, appelez les urgences. Nous alertons le prestataire."", ""required_info"": [""localisation exacte"", ""depuis quand"", ""photo/vidéo si possible""], ""decision_source"": ""RAG"", ""status"": ""TO_VALIDATE""}","Signalement urgent reçu. Merci d’indiquer la résidence/bloc, la localisation exacte, depuis quand, et joindre une photo/vidéo si possible. Si danger immédiat, appelez les urgences. Nous alertons le prestataire.","[""localisation exacte"", ""depuis quand"", ""photo/vidéo si possible""]",PRESTATAIRE,TO_VALIDATE,5,1,RAG
+MSG_6TA7YPP5ZP7R,2026-01-07 20:10:21,RES_FES_ZAYTUNA,"lgarage bab ma kayt7ellch, 7abssna",lgarage bab ma kayt7ellch 7abssna,whatsapp,0,darija,0.9101453333107586,P3,DEFAULT,0,garage_access,CAT_GARAGE_ACCESS,"[""data/docs/admin_faq.md | # FAQ - Administratif (P3) | chunk=0"", ""data/docs/keywords_levels.md | ## P1 | chunk=0"", ""data/docs/procedures_p3.md | # Procédures - Administratif (P3) | chunk=0"", ""data/docs/procedures_p1.md | ### P1_GARAGE_BLOCKED | chunk=0"", ""data/docs/keywords_levels.md | ## P3 | chunk=0""]","[0.8622606992721558, 0.8594744801521301, 0.8494688868522644, 0.8492865562438965, 0.8458529710769653]","SOURCE: data/docs/admin_faq.md
+SECTION: # FAQ - Administratif (P3)
+
+# FAQ - Administratif (P3)
+
+---
+
+SOURCE: data/docs/keywords_levels.md
+SECTION: ## P1
+
+## P1
+panne d’eau, panne eau, coupure eau, ma m9to3, lma m9to3, panne électrique, coupure électrique, dow m9to3, daw m9to3, parties communes, panne electrique parties communes, coupure electrique parties communes, escaliers noirs, porte garage bloquée, garage bloqué, garaj mbloqué, entrées impossible, sorties impossible, mabghach yt7el, accès bloqué, fuite importante, fuite importante mais pas inondation majeure, fuite sérieuse, garage mbloque, Garaj mbeloqué, ascenseur en panne, asansour khaser, camera sécurité en panne, camera panne, personne suspecte, porte garage bloquee, acces garage bloque, camera securite en panne
+
+---
+
+SOURCE: data/docs/procedures_p3.md
+SECTION: # Procédures - Administratif (P3)
+
+# Procédures - Administratif (P3)
+
+Cas administratifs, information, demandes de documents.
+
+---
+
+SOURCE: data/docs/procedures_p1.md
+SECTION: ### P1_GARAGE_BLOCKED
+
+### P1_GARAGE_BLOCKED
+- Description: Porte/accès garage bloqué => P1
+- Doit contenir (all): ['garage']
+- Un des mots (any): ['bloque', 'bloquee', 'mbloque', 'kayt7ellch', 'mabghach yt7el', ""impossible d'entrer"", 'impossible d entrer']
+
+---
+
+SOURCE: data/docs/keywords_levels.md
+SECTION: ## P3
+
+## P3
+attestation, attestation de résidence, war9a, charges, quittance, facture, paiement, khlass, flouss, règlement, suivi, suivi demande, retard dossier, ma jawbounich, pas de réponse, delai, ch7al khassni nkhless","{""urgency_level"": ""P3"", ""category"": ""garage_access"", ""is_urgent"": 0, ""sla_target_minutes"": 1440, ""assigned_to"": ""SYNDIC"", ""decision_source"": ""RAG"", ""status"": ""TO_VALIDATE"", ""response_draft"": ""Bonjour, le garage semble bloqué. Veuillez vérifier rapidement et nous informer de la situation."", ""required_info"": []}","Bonjour, le garage semble bloqué. Veuillez vérifier rapidement et nous informer de la situation.",[],SYNDIC,TO_VALIDATE,1440,0,RAG
+MSG_UTDD2EC2IHOY,2026-01-20 15:06:44,RES_FES_ATLAS,"salam, kayn moshkil f lma f darna, ma kaynch lma mn sbah",salam kayn moshkil f lma f darna ma kaynch lma mn sbah,whatsapp,0,fr,0.7847120485040868,P1,P1_WATER_RULE,1,watr_leak,CAT_WATER,"[""data/docs/keywords_levels.md | ## P1 | chunk=0"", ""data/docs/procedures_p0.md | # Procédures - Urgence critique (P0) | chunk=0"", ""data/docs/procedures_p0.md | ### P0_MEDICAL | chunk=0"", ""data/docs/procedures_p1.md | # Procédures - Urgence (P1) | chunk=0"", ""data/docs/keywords_levels.md | ## P3 | chunk=0""]","[0.8495993614196777, 0.8367432355880737, 0.8360185623168945, 0.8326915502548218, 0.832457423210144]","SOURCE: data/docs/keywords_levels.md
+SECTION: ## P1
+
+## P1
+panne d’eau, panne eau, coupure eau, ma m9to3, lma m9to3, panne électrique, coupure électrique, dow m9to3, daw m9to3, parties communes, panne electrique parties communes, coupure electrique parties communes, escaliers noirs, porte garage bloquée, garage bloqué, garaj mbloqué, entrées impossible, sorties impossible, mabghach yt7el, accès bloqué, fuite importante, fuite importante mais pas inondation majeure, fuite sérieuse, garage mbloque, Garaj mbeloqué, ascenseur en panne, asansour khaser, camera sécurité en panne, camera panne, personne suspecte, porte garage bloquee, acces garage bloque, camera securite en panne
+
+---
+
+SOURCE: data/docs/procedures_p0.md
+SECTION: # Procédures - Urgence critique (P0)
+
+# Procédures - Urgence critique (P0)
+
+Ces cas sont critiques. Toujours prioriser la sécurité.
+
+---
+
+SOURCE: data/docs/procedures_p0.md
+SECTION: ### P0_MEDICAL
+
+### P0_MEDICAL
+- Description: Urgence médicale => P0
+- Un des mots (any): ['inconscient', 'personne inconsciente', 'ne respire pas', 'respiration', 'cardiaque', 'personne agee tombee']
+
+---
+
+SOURCE: data/docs/procedures_p1.md
+SECTION: # Procédures - Urgence (P1)
+
+# Procédures - Urgence (P1)
+
+Ces cas sont urgents mais pas forcément vitaux. Intervention rapide.
+
+---
+
+SOURCE: data/docs/keywords_levels.md
+SECTION: ## P3
+
+## P3
+attestation, attestation de résidence, war9a, charges, quittance, facture, paiement, khlass, flouss, règlement, suivi, suivi demande, retard dossier, ma jawbounich, pas de réponse, delai, ch7al khassni nkhless","{""urgency_level"": ""P1"", ""category"": ""watr_leak"", ""is_urgent"": 1, ""sla_target_minutes"": 30, ""assigned_to"": ""PRESTATAIRE"", ""decision_source"": ""RAG"", ""status"": ""TO_VALIDATE"", ""response_draft"": ""Bonjour, un problème d'eau s'est produit. Veuillez venir immédiatement vérifier et réparer."", ""required_info"": [""localisation exacte"", ""depuis quand"", ""photo/vidéo si possible""]}","Bonjour, un problème d'eau s'est produit. Veuillez venir immédiatement vérifier et réparer.","[""localisation exacte"", ""depuis quand"", ""photo/vidéo si possible""]",PRESTATAIRE,TO_VALIDATE,30,1,RAG
+MSG_SUSMESJT2JPN,2026-01-12 19:28:10,RES_FES_ANDALOUS,C’est quoi la procédure pour réserver la salle polyvalente ?,c'est quoi la procédure pour réserver la salle polyvalente ?,whatsapp,0,fr,0.8611315324067044,P3,DEFAULT,0,other,CAT_DEFAULT,"[""data/docs/procedures_p3.md | ## Actions recommandées (P3) | chunk=0"", ""data/docs/procedures_p3.md | ## Cas typiques (P3) | chunk=0"", ""data/docs/procedures_p3.md | # Procédures - Administratif (P3) | chunk=0"", ""data/docs/admin_faq.md | # FAQ - Administratif (P3) | chunk=0"", ""data/docs/procedures_p2.md | ## Cas typiques (P2) | chunk=0""]","[0.8560954332351685, 0.8518637418746948, 0.8501851558685303, 0.8501800298690796, 0.8474448919296265]","SOURCE: data/docs/procedures_p3.md
+SECTION: ## Actions recommandées (P3)
+
+## Actions recommandées (P3)
+- Identifier la demande exacte + période concernée.
+- Vérifier identité / appartement / résidence.
+- Donner procédure + délais + canal de livraison (WhatsApp/email).
+- Ticket syndic (ou équipe admin).
+
+---
+
+SOURCE: data/docs/procedures_p3.md
+SECTION: ## Cas typiques (P3)
+
+## Cas typiques (P3)
+- Attestation de résidence
+- Quittance / facture
+- Détail des charges
+- Questions générales (horaires, procédures, réservation)
+
+---
+
+SOURCE: data/docs/procedures_p3.md
+SECTION: # Procédures - Administratif (P3)
+
+# Procédures - Administratif (P3)
+
+Cas administratifs, information, demandes de documents.
+
+---
+
+SOURCE: data/docs/admin_faq.md
+SECTION: # FAQ - Administratif (P3)
+
+# FAQ - Administratif (P3)
+
+---
+
+SOURCE: data/docs/procedures_p2.md
+SECTION: ## Cas typiques (P2)
+
+## Cas typiques (P2)
+- Bruit / nuisance répétitive
+- Propreté / saleté / poubelles pleines
+- Stationnement abusif
+- Badge / télécommande / accès (si pas bloquant/sécurité)","{""urgency_level"": ""P3"", ""category"": ""other"", ""is_urgent"": 0, ""sla_target_minutes"": 1440, ""assigned_to"": ""SYNDIC"", ""response_draft"": ""Demande reçue. Merci de préciser la résidence/bloc, la localisation exacte, et joindre une photo/vidéo si possible."", ""required_info"": [], ""decision_source"": ""RAG"", ""status"": ""TO_VALIDATE""}","Demande reçue. Merci de préciser la résidence/bloc, la localisation exacte, et joindre une photo/vidéo si possible.",[],SYNDIC,TO_VALIDATE,1440,0,RAG
+MSG_LQC3C54WSQT2,2025-12-22 07:47:41,RES_CASA_MARINA,La porte du garage est bloquée depuis depuis 1h. Impossible d’entrer/sortir ça devient dangereux.,la porte du garage est bloquée depuis depuis 1h. impossible d'entrer sortir ça devient dangereux.,whatsapp,0,fr,0.8570297321697699,P1,P1_GARAGE_BLOCKED,1,garage_access,CAT_GARAGE_ACCESS,"[""data/docs/procedures_p1.md | ### P1_GARAGE_BLOCKED | chunk=0"", ""data/docs/keywords_levels.md | ## P1 | chunk=0"", ""data/docs/procedures_p0.md | ## Actions recommandées (P0) | chunk=0"", ""data/docs/procedures_p2.md | ## Cas typiques (P2) | chunk=0"", ""data/docs/procedures_p0.md | ### P0_ELEVATOR_TRAPPED | chunk=0""]","[0.8857337832450867, 0.869818925857544, 0.8466111421585083, 0.8455602526664734, 0.8427935838699341]","SOURCE: data/docs/procedures_p1.md
+SECTION: ### P1_GARAGE_BLOCKED
+
+### P1_GARAGE_BLOCKED
+- Description: Porte/accès garage bloqué => P1
+- Doit contenir (all): ['garage']
+- Un des mots (any): ['bloque', 'bloquee', 'mbloque', 'kayt7ellch', 'mabghach yt7el', ""impossible d'entrer"", 'impossible d entrer']
+
+---
+
+SOURCE: data/docs/keywords_levels.md
+SECTION: ## P1
+
+## P1
+panne d’eau, panne eau, coupure eau, ma m9to3, lma m9to3, panne électrique, coupure électrique, dow m9to3, daw m9to3, parties communes, panne electrique parties communes, coupure electrique parties communes, escaliers noirs, porte garage bloquée, garage bloqué, garaj mbloqué, entrées impossible, sorties impossible, mabghach yt7el, accès bloqué, fuite importante, fuite importante mais pas inondation majeure, fuite sérieuse, garage mbloque, Garaj mbeloqué, ascenseur en panne, asansour khaser, camera sécurité en panne, camera panne, personne suspecte, porte garage bloquee, acces garage bloque, camera securite en panne
+
+---
+
+SOURCE: data/docs/procedures_p0.md
+SECTION: ## Actions recommandées (P0)
+
+## Actions recommandées (P0)
+- Demander la localisation exacte (résidence/bloc/étage).
+- Confirmer si danger immédiat (oui/non).
+- Demander photo/vidéo si possible (sans retarder l'urgence).
+- Escalader immédiatement vers prestataire/sécurité selon catégorie.
+
+---
+
+SOURCE: data/docs/procedures_p2.md
+SECTION: ## Cas typiques (P2)
+
+## Cas typiques (P2)
+- Bruit / nuisance répétitive
+- Propreté / saleté / poubelles pleines
+- Stationnement abusif
+- Badge / télécommande / accès (si pas bloquant/sécurité)
+
+---
+
+SOURCE: data/docs/procedures_p0.md
+SECTION: ### P0_ELEVATOR_TRAPPED
+
+### P0_ELEVATOR_TRAPPED
+- Description: Ascenseur bloqué + personne à l’intérieur => P0
+- Doit contenir (all): ['ascenseur']
+- Groupes (any_group): [['bloque', 'coince', 'm7bouss', 'm7boussa'], ['personne', ""a l'interieur"", 'dakhel', 'dakhla'], [""a l'interieur"", 'a linterieur', 'a l interieur', 'interieur', ""a l'interieur""]]","{""urgency_level"": ""P1"", ""category"": ""garage_access"", ""is_urgent"": 1, ""sla_target_minutes"": 30, ""assigned_to"": ""PRESTATAIRE"", ""response_draft"": ""Signalement urgent reçu. Merci d’indiquer la résidence/bloc, la localisation exacte, depuis quand, et joindre une photo/vidéo si possible. Si danger immédiat, appelez les urgences. Nous alertons le prestataire."", ""required_info"": [""localisation exacte"", ""depuis quand"", ""photo/vidéo si possible""], ""decision_source"": ""RAG"", ""status"": ""TO_VALIDATE""}","Signalement urgent reçu. Merci d’indiquer la résidence/bloc, la localisation exacte, depuis quand, et joindre une photo/vidéo si possible. Si danger immédiat, appelez les urgences. Nous alertons le prestataire.","[""localisation exacte"", ""depuis quand"", ""photo/vidéo si possible""]",PRESTATAIRE,TO_VALIDATE,30,1,RAG

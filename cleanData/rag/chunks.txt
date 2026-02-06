@@ -1,0 +1,204 @@
+SOURCE: data/docs/admin_faq.md
+SECTION: # FAQ - Administratif (P3)
+
+# FAQ - Administratif (P3)
+---
+SOURCE: data/docs/admin_faq.md
+SECTION: ## Attestation de résidence
+
+## Attestation de résidence
+- Informations à demander: nom, résidence, numéro appartement, raison (école/travail/dossier), copie CIN si nécessaire (selon règlement).
+---
+SOURCE: data/docs/admin_faq.md
+SECTION: ## Quittance / facture
+
+## Quittance / facture
+- Informations à demander: mois concerné, email/WhatsApp de réception, identité du demandeur.
+---
+SOURCE: data/docs/admin_faq.md
+SECTION: ## Détail des charges
+
+## Détail des charges
+- Informations à demander: période, type de charges, justificatif souhaité.
+---
+SOURCE: data/docs/keywords_levels.md
+SECTION: # Guide - Mots-clés par niveau
+
+# Guide - Mots-clés par niveau
+
+Ce document liste les mots-clés utilisés par le baseline rules (P1/P2/P3).
+---
+SOURCE: data/docs/keywords_levels.md
+SECTION: ## P1
+
+## P1
+panne d’eau, panne eau, coupure eau, ma m9to3, lma m9to3, panne électrique, coupure électrique, dow m9to3, daw m9to3, parties communes, panne electrique parties communes, coupure electrique parties communes, escaliers noirs, porte garage bloquée, garage bloqué, garaj mbloqué, entrées impossible, sorties impossible, mabghach yt7el, accès bloqué, fuite importante, fuite importante mais pas inondation majeure, fuite sérieuse, garage mbloque, Garaj mbeloqué, ascenseur en panne, asansour khaser, camera sécurité en panne, camera panne, personne suspecte, porte garage bloquee, acces garage bloque, camera securite en panne
+---
+SOURCE: data/docs/keywords_levels.md
+SECTION: ## P2
+
+## P2
+bruit, bruit répétitif, nuisance, nuisance régulière, voisin dérange, voisin dérange souvent, sda3, sda3 kayt3awd, propreté, saleté, mwsekh, escalier mwsekh, droj moskhin, poubelles, poubelles pleines, zbel, stationnement, stationnement abusif, badge, télécommande, telecommande, proprete, salete
+---
+SOURCE: data/docs/keywords_levels.md
+SECTION: ## P3
+
+## P3
+attestation, attestation de résidence, war9a, charges, quittance, facture, paiement, khlass, flouss, règlement, suivi, suivi demande, retard dossier, ma jawbounich, pas de réponse, delai, ch7al khassni nkhless
+---
+SOURCE: data/docs/procedures_p0.md
+SECTION: # Procédures - Urgence critique (P0)
+
+# Procédures - Urgence critique (P0)
+
+Ces cas sont critiques. Toujours prioriser la sécurité.
+---
+SOURCE: data/docs/procedures_p0.md
+SECTION: ## Règles P0 (patterns)
+
+## Règles P0 (patterns)
+---
+SOURCE: data/docs/procedures_p0.md
+SECTION: ### P0_GAS
+
+### P0_GAS
+- Description: Gaz / odeur de gaz => P0
+- Un des mots (any): ['gaz', 'odeur de gaz', 'fuite gaz', 'suspicion fuite gaz', 'ri7t lghaz', 'ri7t lgaz']
+---
+SOURCE: data/docs/procedures_p0.md
+SECTION: ### P0_FIRE
+
+### P0_FIRE
+- Description: Incendie / fumée / flammes => P0
+- Un des mots (any): ['incendie', 'fumee', 'flammes', 'dokhan', 'dkhan', 'afia', '3afia']
+---
+SOURCE: data/docs/procedures_p0.md
+SECTION: ### P0_ELEVATOR_TRAPPED
+
+### P0_ELEVATOR_TRAPPED
+- Description: Ascenseur bloqué + personne à l’intérieur => P0
+- Doit contenir (all): ['ascenseur']
+- Groupes (any_group): [['bloque', 'coince', 'm7bouss', 'm7boussa'], ['personne', "a l'interieur", 'dakhel', 'dakhla'], ["a l'interieur", 'a linterieur', 'a l interieur', 'interieur', "a l'interieur"]]
+---
+SOURCE: data/docs/procedures_p0.md
+SECTION: ### P0_FLOOD_MAJOR
+
+### P0_FLOOD_MAJOR
+- Description: Inondation majeure / eau monte / partout / risque électrique => P0
+- Doit contenir (all): ['inondation']
+- Un des mots (any): ['majeure', 'partout', 'eau monte', 'risque electrique']
+---
+SOURCE: data/docs/procedures_p0.md
+SECTION: ### P0_VIOLENCE
+
+### P0_VIOLENCE
+- Description: Agression / bagarre => P0
+- Un des mots (any): ['agression', 'bagarre', 'violence', 'menace', 'mdabza', 'tferga3']
+---
+SOURCE: data/docs/procedures_p0.md
+SECTION: ### P0_MEDICAL
+
+### P0_MEDICAL
+- Description: Urgence médicale => P0
+- Un des mots (any): ['inconscient', 'personne inconsciente', 'ne respire pas', 'respiration', 'cardiaque', 'personne agee tombee']
+---
+SOURCE: data/docs/procedures_p0.md
+SECTION: ## Actions recommandées (P0)
+
+## Actions recommandées (P0)
+- Demander la localisation exacte (résidence/bloc/étage).
+- Confirmer si danger immédiat (oui/non).
+- Demander photo/vidéo si possible (sans retarder l'urgence).
+- Escalader immédiatement vers prestataire/sécurité selon catégorie.
+---
+SOURCE: data/docs/procedures_p1.md
+SECTION: # Procédures - Urgence (P1)
+
+# Procédures - Urgence (P1)
+
+Ces cas sont urgents mais pas forcément vitaux. Intervention rapide.
+---
+SOURCE: data/docs/procedures_p1.md
+SECTION: ## Règles P1 (patterns)
+
+## Règles P1 (patterns)
+---
+SOURCE: data/docs/procedures_p1.md
+SECTION: ### P1_GARAGE_BLOCKED
+
+### P1_GARAGE_BLOCKED
+- Description: Porte/accès garage bloqué => P1
+- Doit contenir (all): ['garage']
+- Un des mots (any): ['bloque', 'bloquee', 'mbloque', 'kayt7ellch', 'mabghach yt7el', "impossible d'entrer", 'impossible d entrer']
+---
+SOURCE: data/docs/procedures_p1.md
+SECTION: ### P1_WATER_RULE
+
+### P1_WATER_RULE
+- Description: Panne/coupure d’eau => P1
+- Un des mots (any): ["panne d'eau", "plus d'eau", "coupure d'eau", 'ma kaynch lma', 'ma kaynach lma', 'mouchkil f lma']
+---
+SOURCE: data/docs/procedures_p1.md
+SECTION: ### P1_ELECTRIC_SPARKS
+
+### P1_ELECTRIC_SPARKS
+- Description: Étincelles / risque électrique => P1
+- Un des mots (any): ['etincelles', 'étincelles', 'court circuit', 'sparks', 'tchicha dyal lbar9']
+---
+SOURCE: data/docs/procedures_p1.md
+SECTION: ## Actions recommandées (P1)
+
+## Actions recommandées (P1)
+- Collecter: résidence/bloc/localisation, depuis quand, impact (combien de voisins).
+- Demander photo/vidéo si possible.
+- Prévenir prestataire (selon catégorie).
+---
+SOURCE: data/docs/procedures_p2.md
+SECTION: # Procédures - Non urgent (P2)
+
+# Procédures - Non urgent (P2)
+
+Ces cas ne sont pas urgents mais nécessitent une intervention planifiée (souvent < 24h).
+---
+SOURCE: data/docs/procedures_p2.md
+SECTION: ## Cas typiques (P2)
+
+## Cas typiques (P2)
+- Bruit / nuisance répétitive
+- Propreté / saleté / poubelles pleines
+- Stationnement abusif
+- Badge / télécommande / accès (si pas bloquant/sécurité)
+---
+SOURCE: data/docs/procedures_p2.md
+SECTION: ## Actions recommandées (P2)
+
+## Actions recommandées (P2)
+- Confirmer localisation exacte (résidence/bloc/étage/porte).
+- Demander depuis quand + fréquence.
+- Demander preuve légère si utile (photo/vidéo si possible).
+- Créer ticket + planifier passage (gardien/prestataire selon catégorie).
+---
+SOURCE: data/docs/procedures_p3.md
+SECTION: # Procédures - Administratif (P3)
+
+# Procédures - Administratif (P3)
+
+Cas administratifs, information, demandes de documents.
+---
+SOURCE: data/docs/procedures_p3.md
+SECTION: ## Cas typiques (P3)
+
+## Cas typiques (P3)
+- Attestation de résidence
+- Quittance / facture
+- Détail des charges
+- Questions générales (horaires, procédures, réservation)
+---
+SOURCE: data/docs/procedures_p3.md
+SECTION: ## Actions recommandées (P3)
+
+## Actions recommandées (P3)
+- Identifier la demande exacte + période concernée.
+- Vérifier identité / appartement / résidence.
+- Donner procédure + délais + canal de livraison (WhatsApp/email).
+- Ticket syndic (ou équipe admin).
