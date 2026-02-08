@@ -267,6 +267,26 @@ CATEGORY_RULES: List[Dict] = [
         ],
     },
     {
+        "category": "reservation",
+        "id": "CAT_RESERVATION",
+        "terms": [
+            "reservation",
+            "réservation",
+            "reserver",
+            "réserver",
+            "salle",
+            "salle polyvalente",
+            "salle commune",
+            "salle des fetes",
+            "salle des fêtes",
+            "evenement",
+            "événement",
+            "anniversaire",
+            "reunion",
+            "réunion"
+        ],
+    },
+    {
         "category": "admin",
         "id": "CAT_ADMIN",
         "terms": [
@@ -308,6 +328,29 @@ def detect_category(text_clean: str) -> Tuple[str, str]:
 
     return "other", "CAT_DEFAULT"
 
+def detect_secondary_category(text_clean: str, primary_category: str) -> str:
+    """
+    Détecte un 2e sujet (ex: propreté + électricité).
+    On ne renvoie pas la même catégorie que la primary.
+    """
+    t = normalize(text_clean)
+    if not t:
+        return ""
+
+    hits = []
+    for r in CATEGORY_RULES_COMPILED:
+        cat = r["category"]
+        if cat == primary_category:
+            continue
+        if any(term_in_text(t, rx) for rx in r["terms_rx"]):
+            hits.append(cat)
+
+    # Priorité des secondaires (à adapter)
+    priority = ["cleanliness", "noise", "admin", "garage_access", "watr_leak", "security", "elevator", "electricity"]
+    for p in priority:
+        if p in hits:
+            return p
+    return hits[0] if hits else ""
 
 # -------------------------
 # MAIN
@@ -338,6 +381,11 @@ def main():
     df["category"], df["category_match"] = zip(
         *df["text_clean"].fillna("").apply(detect_category)
     )
+    df["secondary_category"] = [
+        detect_secondary_category(txt, cat)
+        for txt, cat in zip(df["text_clean"].fillna(""), df["category"].fillna("other"))
+    ]
+
     FORCE_TO_SECURITY = {"P0_GAS", "P0_FIRE"}
 
     mask_force = df["rule_match"].isin(FORCE_TO_SECURITY)

@@ -1,16 +1,16 @@
 message_id,datetime,residence_id,text_clean,language_confidence
-MSG_5270SQG4EIJ0,2025-12-24 05:16:55,RES_FES_ANDALOUS,bonjour je veux une attestation de résidence pour mon dossier administratif. quelles sont les étapes ?,0.7833734739987118
-MSG_MYR06NKWFG3M,2026-01-19 23:29:12,RES_CASA_OASIS,bonjour je veux une attestation de résidence pour le travail. quelles sont les étapes ?,0.7841352993519826
-MSG_UTDD2EC2IHOY,2026-01-20 15:06:44,RES_FES_ATLAS,salam kayn moshkil f lma f darna ma kaynch lma mn sbah,0.7847120485040868
-MSG_7VCNEAS6Y3VG,2026-01-19 04:14:00,RES_CASA_OASIS,salam kayn moshkil f lma f darna ma kaynch lma mn sbah,0.7847120485040868
-MSG_ATQYYV37DIA5,2026-01-16 14:05:13,RES_FES_ZAYTUNA,salam kayn moshkil f lma f darna ma kaynch lma mn sbah,0.7847120485040868
-MSG_ZNQDXAMW2TND,2025-12-28 07:15:17,RES_CASA_MARINA,bonjour je veux une attestation de résidence pour l'école de mon enfant. quelles sont les étapes ?,0.7915440052100846
-MSG_6G5G79OR7875,2025-12-20 18:47:49,RES_FES_ZAYTUNA,kayn sda3 kbir 3nd jaran f lila bghina tdkhl,0.7918049105957503
-MSG_AJ1G1R1DWWO8,2026-01-07 22:35:45,RES_FES_ATLAS,kayn sda3 kbir 3nd jaran f lila bghina tdkhl,0.7918049105957503
-MSG_IUU9K9XJUY0B,2026-01-18 18:30:53,RES_RABAT_RIHAB,forte odeur de gaz au couloir du 3e. on a peur d'une fuite. pouvez-vous agir tout de suite ?,0.8096575317248342
-MSG_S4C3BAEWCFHQ,2025-12-23 06:25:46,RES_CASA_OASIS,fuite importante au hall b et ça sent fort. ça coule en continu.,0.8106083280175064
-MSG_5GJLQM5K8P4Q,2026-01-15 12:28:07,RES_FES_ATLAS,incendie dans le hall b ! il y a de la fumée et ça sent fort. besoin d'intervention immédiate.,0.8123317047254666
-MSG_GC5WI6FQJJA2,2026-01-03 07:06:54,RES_RABAT_RIHAB,incendie dans le ascenseur b ! il y a de la fumée et il y a des enfants. besoin d'intervention immédiate.,0.8273308497161642
-MSG_X5WVFGYW6ZBN,2025-12-31 20:44:33,RES_CASA_MARINA,fuite importante au local technique ça devient dangereux. ça coule en continu.,0.8310531819934376
-MSG_1ESP7BM41QES,2026-01-04 15:45:37,RES_RABAT_RIHAB,pouvez-vous m'envoyer le détail des charges du mois dernier ? !!,0.8349034396334318
-MSG_6DVTJA0ASSNH,2026-01-04 16:03:07,RES_CASA_MARINA,pouvez-vous m'envoyer le détail des charges du mois dernier ?,0.8356005642471178
+MSG_5270SQG4EIJ0,2025-12-24 05:16:55,RES_FES_ANDALOUS,bonjour je veux une attestation de résidence pour mon dossier administratif. quelles sont les étapes ?,0.7861916677794603
+MSG_MYR06NKWFG3M,2026-01-19 23:29:12,RES_CASA_OASIS,bonjour je veux une attestation de résidence pour le travail. quelles sont les étapes ?,0.7869793404595022
+MSG_UTDD2EC2IHOY,2026-01-20 15:06:44,RES_FES_ATLAS,salam kayn moshkil f lma f darna ma kaynch lma mn sbah,0.7873245106435067
+MSG_7VCNEAS6Y3VG,2026-01-19 04:14:00,RES_CASA_OASIS,salam kayn moshkil f lma f darna ma kaynch lma mn sbah,0.7873245106435067
+MSG_ATQYYV37DIA5,2026-01-16 14:05:13,RES_FES_ZAYTUNA,salam kayn moshkil f lma f darna ma kaynch lma mn sbah,0.7873245106435067
+MSG_ZNQDXAMW2TND,2025-12-28 07:15:17,RES_CASA_MARINA,bonjour je veux une attestation de résidence pour l'école de mon enfant. quelles sont les étapes ?,0.7942868011932132
+MSG_6G5G79OR7875,2025-12-20 18:47:49,RES_FES_ZAYTUNA,kayn sda3 kbir 3nd jaran f lila bghina tdkhl,0.7948583464317008
+MSG_AJ1G1R1DWWO8,2026-01-07 22:35:45,RES_FES_ATLAS,kayn sda3 kbir 3nd jaran f lila bghina tdkhl,0.7948583464317008
+MSG_IUU9K9XJUY0B,2026-01-18 18:30:53,RES_RABAT_RIHAB,forte odeur de gaz au couloir du 3e. on a peur d'une fuite. pouvez-vous agir tout de suite ?,0.8134171788328616
+MSG_S4C3BAEWCFHQ,2025-12-23 06:25:46,RES_CASA_OASIS,fuite importante au hall b et ça sent fort. ça coule en continu.,0.8138643539437059
+MSG_5GJLQM5K8P4Q,2026-01-15 12:28:07,RES_FES_ATLAS,incendie dans le hall b ! il y a de la fumée et ça sent fort. besoin d'intervention immédiate.,0.8174051962099358
+MSG_3E4XYF9IGFU77,2025-12-31 14:07:52,FES_TEST,urgent il y a de la fumée noire qui sort du local poubelles au sous-sol ! l'odeur est très forte et ça pique les yeux,0.8295856516526534
+MSG_GC5WI6FQJJA2,2026-01-03 07:06:54,RES_RABAT_RIHAB,incendie dans le ascenseur b ! il y a de la fumée et il y a des enfants. besoin d'intervention immédiate.,0.8332051855167376
+MSG_X5WVFGYW6ZBN,2025-12-31 20:44:33,RES_CASA_MARINA,fuite importante au local technique ça devient dangereux. ça coule en continu.,0.8345525260168873
+MSG_3E4zzzzF9IGFU77,2025-12-31 14:07:52,FES_TEST,ascenseur bloqué entre deux étages avec une personne à l'intérieur ! elle panique et ne répond plus,0.8375570638499195
