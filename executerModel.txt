@@ -15,4 +15,16 @@ python src/09_rag_generate_responses.py
 
 
 
+airflow dags trigger syndic_rag_pipeline --conf '{"limit": 10}'
 
+
+streamlit run validation_ui.py
+
+streamlit run analytics_ui.py
+
+
+
+chmod +x run_demo.sh
+
+
+./run_demo.sh

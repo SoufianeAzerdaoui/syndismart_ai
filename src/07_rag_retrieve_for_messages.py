@@ -17,6 +17,18 @@ FORCED_DOC_BY_LEVEL = {
     "P2": "data/docs/procedures_p2.md",
     "P3": "data/docs/procedures_p3.md",
 }
+FORCED_DOC_BY_CATEGORY = {
+    "admin": "data/docs/charges_et_quittances.md",
+    "other": "data/docs/reservation_salle_polyvalente.md",
+    "electricity": "data/docs/electricite_etincelles.md",
+    "elevator": "data/docs/ascenseur_panne.md",
+}
+FORCED_DOC_BY_CATEGORY = {
+    "admin": "data/docs/charges_et_quittances.md",
+    "reservation": "data/docs/reservation_salle_polyvalente.md",
+    "electricity": "data/docs/electricite_etincelles.md",
+    "elevator": "data/docs/ascenseur_panne.md",
+}
 
 
 def safe_top_k(requested_k: int, nb_chunks: int) -> int:
@@ -47,7 +59,7 @@ def rewrite_query_from_row(text: str, urgency_level: str, category: str) -> str:
         prefix.append("administratif P3")
 
     if category:
-        prefix.append(f"categorie {category}")
+        prefix.append(f"procedure {category}")
 
     return "query: " + " ".join(prefix + [q])
 
@@ -165,13 +177,24 @@ def main():
             picked_scores.append(float(score))
 
         # ✅ Forcer le doc de procédures du niveau (P0/P1/P2/P3)
-        forced_doc = FORCED_DOC_BY_LEVEL.get(urgency, FORCED_DOC_BY_LEVEL["P3"])
+        # 1) Forcer doc par NIVEAU
+        forced_level_doc = FORCED_DOC_BY_LEVEL.get(urgency)
         picked_sources, picked_scores = force_doc_in_results(
             picked_sources,
             picked_scores,
-            target_doc_prefix=forced_doc,
+            target_doc_prefix=forced_level_doc,
             source_to_chunk=source_to_chunk,
-            boost_score=1.0,
+            boost_score=1.2,
+        )
+
+        # 2) Forcer doc par CATÉGORIE
+        forced_cat_doc = FORCED_DOC_BY_CATEGORY.get(category)
+        picked_sources, picked_scores = force_doc_in_results(
+            picked_sources,
+            picked_scores,
+            target_doc_prefix=forced_cat_doc,
+            source_to_chunk=source_to_chunk,
+            boost_score=1.3,
         )
 
         context = build_context_text(picked_sources, source_to_chunk)
